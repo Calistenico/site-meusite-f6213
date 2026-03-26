@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-br" class="scroll-smooth"><head>
+    <meta name="vyntrix-project" content="meusite-f6213">
+    <meta name="vyntrix-version" content="v16">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo TSL | Excelência em Transportes e Construção</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #050a14; overflow-x: hidden; }
+        .font-title { font-family: 'Orbitron', sans-serif; }
+        
+        /* Efeitos Premium de Gradiente */
+        .gold-gradient {
+            background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+        
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .bg-gold {
+            background: linear-gradient(90deg, #bf953f, #b38728);
+            transition: all 0.4s ease;
+        }
+
+        .bg-gold:hover {
+            background: linear-gradient(90deg, #d4af37, #aa771c);
+            box-shadow: 0 0 25px rgba(191, 149, 63, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism (Efeito Vidro) no Header */
+        .glass-header {
+            background: rgba(10, 18, 33, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Lógica das Abas com Animação Suave */
+        .tab-content { 
+            display: none; 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .tab-content.active { 
+            display: block; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tab-btn {
+            border-bottom: 2px solid transparent; 
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background: #bf953f;
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .tab-btn.active::after { width: 100%; }
+        .tab-btn.active { 
+            background: linear-gradient(to top, rgba(191, 149, 63, 0.15), transparent);
+            color: #fcf6ba; 
+        }
+        .tab-btn:hover:not(.active) { background: rgba(255, 255, 255, 0.03); }
+
+        /* Zoom Effect em Imagens (AJUSTADO PARA NÃO CORTAR) */
+        .img-wrapper {
+            overflow: hidden;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(191, 149, 63, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            position: relative;
+            background-color: #080e1a; /* Fundo escuro para artes menores */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img-wrapper img {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-wrapper:hover img {
+            transform: scale(1.05); /* Zoom mais suave para não sair tanto da tela */
+        }
+        .img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Sombra bem mais clara para não escurecer os textos da sua arte */
+            background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.3)); 
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Animações de Scroll (Reveal) e Flutuação */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        
+        .floating { animation: float 4s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.bottom-6{bottom:1.5rem}.left-1\/2{left:50%}.right-6{right:1.5rem}.top-0{top:0px}.top-1\/2{top:50%}.z-10{z-index:10}.z-20{z-index:20}.z-50{z-index:50}.z-\[100\]{z-index:100}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.-mt-12{margin-top:-3rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-24{margin-bottom:6rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-16{margin-top:4rem}.mt-3{margin-top:0.75rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-\[600px\]{height:600px}.h-auto{height:auto}.h-full{height:100%}.w-10{width:2.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-8{width:2rem}.w-\[600px\]{width:600px}.w-auto{width:auto}.w-full{width:100%}.max-w-2xl{max-width:42rem}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l-2{border-left-width:2px}.border-t{border-top-width:1px}.border-\[\#bf953f\]{--tw-border-opacity:1;border-color:rgb(191 149 63 / var(--tw-border-opacity, 1))}.border-blue-500\/20{border-color:rgb(59 130 246 / 0.2)}.border-transparent{border-color:transparent}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.border-yellow-900\/20{border-color:rgb(113 63 18 / 0.2)}.border-yellow-900\/30{border-color:rgb(113 63 18 / 0.3)}.bg-\[\#03060c\]{--tw-bg-opacity:1;background-color:rgb(3 6 12 / var(--tw-bg-opacity, 1))}.bg-\[\#080e1a\]{--tw-bg-opacity:1;background-color:rgb(8 14 26 / var(--tw-bg-opacity, 1))}.bg-\[\#0d172a\]{--tw-bg-opacity:1;background-color:rgb(13 23 42 / var(--tw-bg-opacity, 1))}.bg-blue-900\/20{background-color:rgb(30 58 138 / 0.2)}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-green-500\/20{background-color:rgb(34 197 94 / 0.2)}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.bg-\[radial-gradient\(circle_at_center\2c _var\(--tw-gradient-stops\)\)\]{background-image:radial-gradient(circle at center, var(--tw-gradient-stops))}.from-\[\#122240\]{--tw-gradient-from:#122240 var(--tw-gradient-from-position);--tw-gradient-to:rgb(18 34 64 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-\[\#050a14\]{--tw-gradient-to:#050a14 var(--tw-gradient-to-position)}.object-contain{object-fit:contain}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-8{padding:2rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pl-4{padding-left:1rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-\[\#bf953f\]{--tw-text-opacity:1;color:rgb(191 149 63 / var(--tw-text-opacity, 1))}.text-\[\#fcf6ba\]{--tw-text-opacity:1;color:rgb(252 246 186 / var(--tw-text-opacity, 1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-green-500{--tw-text-opacity:1;color:rgb(34 197 94 / var(--tw-text-opacity, 1))}.opacity-40{opacity:0.4}.opacity-75{opacity:0.75}.opacity-80{opacity:0.8}.opacity-90{opacity:0.9}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_0_20px_rgba\(34\2c 197\2c 94\2c 0\.6\)\]{--tw-shadow:0 0 20px rgba(34,197,94,0.6);--tw-shadow-colored:0 0 20px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-\[120px\]{--tw-blur:blur(120px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-lg{--tw-drop-shadow:drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-\[\#bf953f\]:hover{--tw-border-opacity:1;border-color:rgb(191 149 63 / var(--tw-border-opacity, 1))}.hover\:border-\[\#bf953f\]\/30:hover{border-color:rgb(191 149 63 / 0.3)}.hover\:border-white\/10:hover{border-color:rgb(255 255 255 / 0.1)}.hover\:bg-\[\#bf953f\]:hover{--tw-bg-opacity:1;background-color:rgb(191 149 63 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-800\/40:hover{background-color:rgb(30 64 175 / 0.4)}.hover\:bg-white\/10:hover{background-color:rgb(255 255 255 / 0.1)}.hover\:text-\[\#bf953f\]:hover{--tw-text-opacity:1;color:rgb(191 149 63 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:opacity-80:hover{opacity:0.8}.group:hover .group-hover\:hidden{display:none}.group:hover .group-hover\:-translate-y-1{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-125{--tw-scale-x:1.25;--tw-scale-y:1.25;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-green-500\/40{background-color:rgb(34 197 94 / 0.4)}@media (min-width: 768px){.md\:order-1{order:1}.md\:order-2{order:2}.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:justify-start{justify-content:flex-start}.md\:justify-end{justify-content:flex-end}.md\:p-14{padding:3.5rem}.md\:text-left{text-align:left}.md\:text-right{text-align:right}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style><link id="vyn-anim" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"><style id="vyn-color-inject">:root{--gold:#111111 !important;--accent:#111111 !important;--cor-botoes:#d4af37 !important;--red:#111111 !important;--purple:#111111 !important;--p:#111111 !important;}</style>
+</head>
+<body class="text-white">
+
+    <header class="glass-header border-b border-yellow-900/30 sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition">
+                <img src="logo.png" alt="TSL" class="h-12 w-auto">
+                <div>
+                    <h1 class="font-title text-2xl font-bold tracking-widest gold-gradient leading-none">Conheça o Meu Site, seu destino para o melhor streaming</h1>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400 italic">Agilidade, Confiança e Compromisso</span>
+                </div>
+            </div>
+            <div class="hidden md:flex flex-col items-end text-sm">
+                <span class="text-gray-400">Atendimento Rápido:</span>
+                <a href="tel:21982013027" class="text-xl font-bold text-[#fcf6ba] hover:text-white transition-colors duration-300">(21) 98201-3027</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative py-24 overflow-hidden bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#122240] to-[#050a14]">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10 reveal visible floating">
+            <h2 class="font-title text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight leading-tight">CONSTRUA E DESLOQUE A SUA OBRA</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto mb-10 text-lg md:text-xl font-light italic opacity-90 animate__animated animate__fadeInUp" style="letter-spacing: 3.5px !important; line-height: 1.8 !important; font-size: 38px !important; font-weight: 500 !important; color: rgb(222, 224, 227) !important;">
+                "Sua satisfação, responsabilidade e agilidade são o nosso compromisso."
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://api.whatsapp.com/send?phone=5511999999999?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20orçamento." class="bg-gold text-black px-10 py-4 rounded-full font-black uppercase tracking-wide">
+                    Solicitar Orçamento Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-4 -mt-12 mb-24 relative z-20 reveal visible">
+        <div class="bg-[#0d172a] rounded-xl shadow-2xl border border-white/10 overflow-hidden backdrop-blur-sm">
+            <div class="grid grid-cols-1 md:grid-cols-3 bg-[#080e1a] border-b border-white/5 relative">
+                <button onclick="openTab(event, 'fretes')" class="tab-btn active flex items-center justify-center gap-4 py-6 px-6 font-title text-sm font-bold tracking-wider text-gray-400 uppercase w-full">
+                    <i class="fas fa-truck-moving text-2xl w-8 text-center drop-shadow-lg"></i> 
+                    <span>FRETES &amp; TRANSPORTES</span>
+                </button>
+                <button onclick="openTab(event, 'materiais')" class="tab-btn flex items-center justify-center gap-4 py-6 px-6 font-title text-sm font-bold tracking-wider text-gray-400 uppercase w-full">
+                    <i class="fas fa-trowel-bricks text-2xl w-8 text-center drop-shadow-lg"></i> 
+                    <span>MATERIAIS DE CONSTRUÇÃO</span>
+                </button>
+                <button onclick="openTab(event, 'cacambas')" class="tab-btn flex items-center justify-center gap-4 py-6 px-6 font-title text-sm font-bold tracking-wider text-gray-400 uppercase w-full">
+                    <i class="fas fa-dumpster text-2xl w-8 text-center drop-shadow-lg"></i> 
+                    <span>CAÇAMBAS ESTACIONÁRIAS</span>
+                </button>
+            </div>
+
+            <div class="p-8 md:p-14">
+                <div id="fretes" class="tab-content active">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="font-title text-3xl md:text-4xl font-bold mb-6 gold-gradient uppercase leading-tight">Transporte <br>Especializado</h3>
+                            <div class="space-y-4 text-gray-300">
+                                <div class="group flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/5 hover:bg-white/10 hover:border-[#bf953f]/30 transition-all cursor-default">
+                                    <i class="fas fa-box-open text-[#bf953f] text-xl group-hover:scale-125 group-hover:translate-x-1 transition-transform"></i>
+                                    <span class="font-light">Pequenos Fretes e Mudanças Completas</span>
+                                </div>
+                                <div class="group flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/5 hover:bg-white/10 hover:border-[#bf953f]/30 transition-all cursor-default">
+                                    <i class="fas fa-motorcycle text-[#bf953f] text-xl group-hover:scale-125 group-hover:translate-x-1 transition-transform"></i>
+                                    <span class="font-light">Transporte de Motos com Segurança</span>
+                                </div>
+                                <div class="group flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/5 hover:bg-white/10 hover:border-[#bf953f]/30 transition-all cursor-default">
+                                    <i class="fas fa-clock text-[#bf953f] text-xl group-hover:scale-125 group-hover:translate-x-1 transition-transform"></i>
+                                    <span class="font-light">Retirada e Entrega Rápida</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <div class="img-wrapper w-full">
+                                <img src="2.png" alt="Fretes TSL" class="w-full h-auto object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="materiais" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="font-title text-3xl md:text-4xl font-bold mb-6 gold-gradient uppercase">Encontre tudo que você precisa para se entreter, do seu jeito, no Meu Site</h3>
+                            <p class="text-gray-400 mb-8 italic font-light text-lg border-l-2 border-[#bf953f] pl-4">Tudo para seu streaming com qualidade e rapidez, o Meu Site é a sua escolha certa</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <span class="group bg-blue-900/20 border border-blue-500/20 p-4 rounded-lg text-center text-sm font-medium hover:bg-blue-800/40 hover:border-[#bf953f] transition-all cursor-default"><i class="fas fa-cubes text-[#bf953f] block mb-2 text-xl group-hover:-translate-y-1 transition-transform"></i>Areia e Brita</span>
+                                <span class="group bg-blue-900/20 border border-blue-500/20 p-4 rounded-lg text-center text-sm font-medium hover:bg-blue-800/40 hover:border-[#bf953f] transition-all cursor-default"><i class="fas fa-boxes text-[#bf953f] block mb-2 text-xl group-hover:-translate-y-1 transition-transform"></i>Cimento e Cal</span>
+                                <span class="group bg-blue-900/20 border border-blue-500/20 p-4 rounded-lg text-center text-sm font-medium hover:bg-blue-800/40 hover:border-[#bf953f] transition-all cursor-default"><i class="fas fa-tree text-[#bf953f] block mb-2 text-xl group-hover:-translate-y-1 transition-transform"></i>Madeiramento</span>
+                                <span class="group bg-blue-900/20 border border-blue-500/20 p-4 rounded-lg text-center text-sm font-medium hover:bg-blue-800/40 hover:border-[#bf953f] transition-all cursor-default"><i class="fas fa-hammer text-[#bf953f] block mb-2 text-xl group-hover:-translate-y-1 transition-transform"></i>Ferragens</span>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                             <div class="img-wrapper w-full">
+                                <img src="3.png" alt="Materiais Construção" class="w-full h-auto object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cacambas" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="font-title text-3xl md:text-4xl font-bold mb-6 gold-gradient uppercase">Viva a emoção do seu streaming favorito, localizado no Meu Site</h3>
+                            <p class="text-gray-300 text-lg mb-8 font-light leading-relaxed">
+                                Ideal para grandes reformas e limpeza de terrenos. Garantimos pontualidade na entrega e retirada com frota própria.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="group flex items-center gap-3 text-gray-300 bg-white/5 p-3 rounded-lg border border-transparent hover:border-white/10 transition-all cursor-default">
+                                    <div class="bg-green-500/20 p-2 rounded-full group-hover:bg-green-500/40 transition-colors"><i class="fas fa-check text-green-400 text-sm"></i></div> Atendimento a Condomínios
+                                </li>
+                                <li class="group flex items-center gap-3 text-gray-300 bg-white/5 p-3 rounded-lg border border-transparent hover:border-white/10 transition-all cursor-default">
+                                    <div class="bg-green-500/20 p-2 rounded-full group-hover:bg-green-500/40 transition-colors"><i class="fas fa-check text-green-400 text-sm"></i></div> Destinação Correta e Ecológica
+                                </li>
+                                <li class="group flex items-center gap-3 text-gray-300 bg-white/5 p-3 rounded-lg border border-transparent hover:border-white/10 transition-all cursor-default">
+                                    <div class="bg-green-500/20 p-2 rounded-full group-hover:bg-green-500/40 transition-colors"><i class="fas fa-check text-green-400 text-sm"></i></div> Caçambas Robustas e Seguras
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="order-1 md:order-2">
+                             <div class="img-wrapper w-full">
+                                <img src="1.png" alt="Caçambas TSL" class="w-full h-auto object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#03060c] border-t border-yellow-900/20 py-16 px-6 reveal visible">
+        <div class="container mx-auto grid md:grid-cols-3 gap-12 items-center">
+            <div class="text-center md:text-left">
+                <h4 class="font-title gold-gradient font-bold mb-4 tracking-widest text-sm">ONDE ATENDEMOS</h4>
+                <p class="text-gray-400 text-sm leading-relaxed flex items-center justify-center md:justify-start gap-2">
+                    <i class="fas fa-map-marker-alt text-[#bf953f]"></i>
+                    <span>Marica,<br> Niterói e Região</span>
+                </p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <h4 class="font-title text-white font-black text-2xl mb-4 tracking-widest opacity-80">Conheça o Meu Site, seu destino para o melhor streaming</h4>
+                <div class="flex justify-center gap-6 text-xl">
+                    <a href="https://www.instagram.com/grupotsloficial?igsh=MTZzdWg0YmV4eWhtdg==" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#bf953f] hover:-translate-y-1 transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1bP8Wo4uoP/" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#bf953f] hover:-translate-y-1 transition-all"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <h4 class="font-title gold-gradient font-bold mb-4 tracking-widest text-sm">CONTATO DIRETO</h4>
+                <a href="tel:21982013027" class="text-white font-bold text-2xl leading-none hover:text-[#bf953f] transition-colors">(21) 98201-3027</a>
+                <p class="text-xs text-green-500 mt-3 font-bold uppercase tracking-widest flex items-center justify-center md:justify-end gap-2">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Online no WhatsApp
+                </p>
+            </div>
+        </div>
+        <div class="container mx-auto mt-16 pt-8 border-t border-white/5 text-center">
+            <p class="text-[11px] text-gray-600 uppercase tracking-widest font-light">© 2026 GRUPO TSL | Desenvolvido para máxima performance</p>
+        </div>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5511999999999?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20orçamento." class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.6)] hover:scale-110 transition-transform duration-300 z-[100] group" target="_blank">
+        <span class="absolute w-full h-full bg-green-500 rounded-full animate-ping opacity-40 group-hover:hidden"></span>
+        <i class="fab fa-whatsapp text-3xl relative z-10"></i>
+    </a>
+
+    <script>
+        // Lógica de Troca de Abas
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            
+            // Oculta todos os conteúdos com uma leve animação
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+                // Reset de opacidade e transform para re-animar
+                tabcontent[i].style.opacity = '0';
+                tabcontent[i].style.transform = 'translateY(20px)';
+            }
+            
+            // Remove classe ativa dos botões
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // Mostra a aba atual
+            let currentTab = document.getElementById(tabName);
+            currentTab.classList.add("active");
+            
+            // Força reflow para CSS aplicar transição suave de entrada
+            setTimeout(() => {
+                currentTab.style.opacity = '1';
+                currentTab.style.transform = 'translateY(0)';
+            }, 50);
+
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Animação Reveal ao Rolar a Página (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Anima só na primeira vez
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+
+<script id="vyn-bs" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><section style="background:#0a0a0c;min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&amp;q=80" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25;"><div style="max-width:1100px;margin:0 auto;padding:80px 40px;position:relative;z-index:1;width:100%;text-align:center;"><span style="background:#D4AF37;color:#000;font-size:11px;font-weight:800;padding:5px 14px;border-radius:99px;text-transform:uppercase;">Novidade</span><h1 style="color:#fff;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.05;margin:20px auto 24px;" class="">O Método que vai<br><span style="color:#D4AF37;">Mudar Tudo</span></h1><p style="color:#ccc;font-size:1.2rem;max-width:540px;margin:0 auto 40px;line-height:1.6;">Estratégia usada pelos melhores para crescer de forma consistente.</p><div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;"><a href="#" style="background:#D4AF37;color:#000;font-weight:800;padding:16px 40px;border-radius:50px;text-decoration:none;font-size:1rem;">COMEÇAR AGORA →</a><a href="#" style="background:transparent;color:#fff;font-weight:600;padding:16px 32px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,.3);font-size:1rem;">Saiba Mais</a></div></div></section><section style="background:#050505;padding:100px 20px;"><div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:48px;flex-direction:row-reverse;"><div style="flex:1;min-width:300px;"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&amp;q=80" style="width:100%;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.6);"></div><div style="flex:1;min-width:300px;text-align:right;"><h1 style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px;">Alta <span style="color:#D4AF37;">Performance</span></h1><p style="color:#aaa;font-size:1.1rem;margin-bottom:30px;line-height:1.6;">Foque no que realmente importa e deixe o resto conosco. Uma estrutura montada exclusivamente para sua vitória.</p><a href="#" style="display:inline-block;background:#D4AF37;color:#000;font-weight:800;padding:16px 40px;border-radius:8px;text-decoration:none;font-size:1rem;">GARANTIR RESULTADO</a></div></div></section><section style="background:#0a0a0c;padding:100px 20px;"><div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:48px;"><div style="flex:1;min-width:300px;"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&amp;q=80" style="width:100%;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.6);"></div><div style="flex:1;min-width:300px;text-align:left;"><h1 style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px;">Mude sua <span style="color:#D4AF37;">Visão</span></h1><p style="color:#aaa;font-size:1.1rem;margin-bottom:30px;line-height:1.6;">Descubra como transformar o seu ambiente e atrair mais clientes em tempo recorde com este método inovador.</p><a href="#" style="display:inline-block;background:#D4AF37;color:#000;font-weight:800;padding:16px 40px;border-radius:8px;text-decoration:none;font-size:1rem;">SAIBA COMO →</a></div></div></section><section style="background: rgb(5, 5, 5); padding: 80px 20px; text-align: center !important;" class=""><div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:50px;"><div style="flex:1;min-width:300px;"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&amp;q=80" style="width:100%;border-radius:16px;box-shadow:0 15px 40px rgba(0,0,0,0.6);"></div><div style="flex:1;min-width:300px;text-align:left;"><div style="display:inline-block;background:rgba(212,175,55,0.1);color:#D4AF37;padding:5px 15px;border-radius:5px;font-weight:800;font-size:12px;margin-bottom:15px;">EDIÇÃO LIMITADA</div><h1 style="color: rgb(255, 255, 255); font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; text-align: right !important;" class="">Fone Premium <span style="color:#D4AF37;">Pro Max</span></h1><p style="color:#aaa;line-height:1.6;margin-bottom:20px;">Cancelamento de ruído ativo, áudio espacial e até 40 horas de bateria. A imersão sonora definitiva.</p><div style="margin-bottom:25px;"><span style="color:#666;text-decoration:line-through;font-size:1.2rem;margin-right:10px;">De R$ 899,00</span><span style="color:#D4AF37;font-size:2.5rem;font-weight:900;">Por R$ 499,00</span></div><a href="#" style="display:inline-block;background:#D4AF37;color:#000;font-weight:800;padding:18px 50px;border-radius:8px;text-decoration:none;font-size:1.1rem;box-shadow:0 10px 25px rgba(212,175,55,0.3);">COMPRAR AGORA</a></div></div></section><section style="background:#050505;padding:80px 20px;" class=""><div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:50px;"><div style="flex:1;min-width:300px;"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&amp;q=80" style="width:100%;border-radius:16px;box-shadow:0 15px 40px rgba(0,0,0,0.6);"></div><div style="flex:1;min-width:300px;text-align:left;"><div style="display:inline-block;background:rgba(212,175,55,0.1);color:#D4AF37;padding:5px 15px;border-radius:5px;font-weight:800;font-size:12px;margin-bottom:15px;">EDIÇÃO LIMITADA</div><h1 style="color:#fff;font-size:3rem;font-weight:800;line-height:1.1;margin-bottom:15px;">Fone Premium <span style="color:#D4AF37;">Pro Max</span></h1><p style="color:#aaa;line-height:1.6;margin-bottom:20px;">Cancelamento de ruído ativo, áudio espacial e até 40 horas de bateria. A imersão sonora definitiva.</p><div style="margin-bottom:25px;"><span style="color:#666;text-decoration:line-through;font-size:1.2rem;margin-right:10px;">De R$ 899,00</span><span style="color:#D4AF37;font-size:2.5rem;font-weight:900;">Por R$ 499,00</span></div><a href="#" style="display:inline-block;background:#D4AF37;color:#000;font-weight:800;padding:18px 50px;border-radius:8px;text-decoration:none;font-size:1.1rem;box-shadow:0 10px 25px rgba(212,175,55,0.3);">COMPRAR AGORA</a></div></div></section><section style="background:linear-gradient(135deg,#0a0a0c,#111);padding:80px 20px;"><div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:40px;"><div style="flex:1;min-width:300px;text-align:left;"><h1 style="color:#fff;font-size:3rem;font-weight:800;margin-bottom:20px;">Baixe nosso <span style="color:#D4AF37;">E-book Gratuito</span></h1><p style="color:#ccc;font-size:1.1rem;">Aprenda as 5 estratégias essenciais para alavancar seu negócio em 30 dias.</p></div><div style="flex:1;min-width:300px;max-width:450px;"><div style="background:#1a1a1e;padding:40px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);"><h3 style="color:#fff;font-weight:700;margin-bottom:20px;text-align:center;">Garantir meu E-book</h3><input type="text" placeholder="Seu Nome" style="width:100%;padding:14px;margin-bottom:12px;border-radius:8px;border:1px solid #333;background:#0f0f11;color:#fff;"><input type="email" placeholder="Seu melhor E-mail" style="width:100%;padding:14px;margin-bottom:20px;border-radius:8px;border:1px solid #333;background:#0f0f11;color:#fff;"><a href="#" style="display:block;text-align:center;background:#D4AF37;color:#000;font-weight:800;padding:16px;border-radius:8px;text-decoration:none;">QUERO RECEBER AGORA</a></div></div></div></section><section style="background:linear-gradient(135deg,#0a0a0c,#1a0a00);padding:80px 20px;text-align:center;"><div style="max-width:800px;margin:0 auto;"><p style="color:#D4AF37;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">⚠️ OFERTA POR TEMPO LIMITADO</p><h1 style="color:#fff;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:16px;">Esta Oferta Encerra em:</h1><div style="display:flex;justify-content:center;gap:16px;margin:28px 0;flex-wrap:wrap;"><div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:16px 24px;min-width:80px;"><div id="vyn-cd-h" style="font-size:2.5rem;font-weight:800;color:#D4AF37;">03</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;">Horas</div></div><div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:16px 24px;min-width:80px;"><div id="vyn-cd-m" style="font-size:2.5rem;font-weight:800;color:#D4AF37;">00</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;">Minutos</div></div><div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:16px 24px;min-width:80px;"><div id="vyn-cd-s" style="font-size:2.5rem;font-weight:800;color:#D4AF37;">00</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;">Segundos</div></div></div><a href="#" style="display:inline-block;background:#D4AF37;color:#000;font-weight:800;padding:18px 48px;border-radius:50px;text-decoration:none;font-size:1rem;">GARANTIR MINHA VAGA →</a></div><script>(function(){let t=3*3600;function u(){const h=String(Math.floor(t/3600)).padStart(2,'0');const m=String(Math.floor((t%3600)/60)).padStart(2,'0');const s=String(t%60).padStart(2,'0');const hE=document.getElementById('vyn-cd-h');const mE=document.getElementById('vyn-cd-m');const sE=document.getElementById('vyn-cd-s');if(hE)hE.textContent=h;if(mE)mE.textContent=m;if(sE)sE.textContent=s;if(t>0)t--;}u();setInterval(u,1000);})();</script></section><script id="vyn-live-script">
+
+            document.addEventListener("DOMContentLoaded", () => {
+
+                if(document.body.classList.contains('is-editor')) return;
+
+                
+
+                // 1. Observer de Animação
+
+                const obs = new IntersectionObserver((entries) => {
+
+                    entries.forEach(e => {
+
+                        if(e.isIntersecting) {
+
+                            const animClass = e.target.getAttribute('data-anim-class');
+
+                            if(animClass) {
+
+                                e.target.classList.add('animate__animated', animClass);
+
+                                e.target.style.visibility = 'visible';
+
+                            }
+
+                            obs.unobserve(e.target);
+
+                        }
+
+                    });
+
+                });
+
+
+
+                document.querySelectorAll('.animate__animated').forEach(el => {
+
+                    const animClass = Array.from(el.classList).find(c => c.startsWith('animate__') && c !== 'animate__animated');
+
+                    if(animClass) {
+
+                        el.setAttribute('data-anim-class', animClass);
+
+                        el.classList.remove('animate__animated', animClass);
+
+                        el.style.visibility = 'hidden';
+
+                        obs.observe(el);
+
+                    }
+
+                });
+
+
+
+                // 2. Fallback para links alternativos
+
+                document.querySelectorAll('[data-href]').forEach(el => {
+
+                    el.addEventListener('click', function(e) {
+
+                        e.preventDefault();
+
+                        const url = this.getAttribute('data-href');
+
+                        if(url.includes('http') || url.includes('whatsapp')) window.open(url, '_blank');
+
+                        else window.location.href = url;
+
+                    });
+
+                });
+
+            });
+
+        </script></body></html>
